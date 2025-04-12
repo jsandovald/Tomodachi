@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TomodachiCoffee.Models;
 
 namespace TomodachiCoffee.View
 {
@@ -22,6 +23,17 @@ namespace TomodachiCoffee.View
         public Dashboard()
         {
             InitializeComponent();
+
+            var vm = new ViewModel();
+
+            vm.LogoutAction = () =>
+            {
+                var login = new Login();
+                login.Show();
+                this.Close();
+            };
+
+            this.DataContext = vm;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

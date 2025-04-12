@@ -36,16 +36,16 @@
                         </StackPanel>
                         
                         <!--Menu Buttons-->
-                        <uc:MenuButton Icon="HomeVariant" IsActive="True" />
-                        <uc:MenuButton Icon="Finance" />
-                        <uc:MenuButton Icon="CommentMultipleOutline" />
-                        <uc:MenuButton Icon="AccountSearchOutline" />
-                        <uc:MenuButton Icon="BookSyncOutline" />
-                        <uc:MenuButton Icon="AlertCircleCheckOutline" />
-                        <uc:MenuButton Icon="CogOutline" />
-
+                        <uc:MenuButton Icon="HomeVariant" Command="{Binding NavigateCommand}" CommandParameter="Home"/>
+                        <uc:MenuButton Icon="Finance" Command="{Binding NavigateCommand}" CommandParameter="Finance"/>
+                        <uc:MenuButton Icon="CommentMultipleOutline" Command="{Binding NavigateCommand}" CommandParameter="Messages"/>
+                        <uc:MenuButton Icon="AccountSearchOutline" Command="{Binding NavigateCommand}" CommandParameter="Search"/>
+                        <uc:MenuButton Icon="BookSyncOutline" Command="{Binding NavigateCommand}" CommandParameter="Library"/>
+                        <uc:MenuButton Icon="AlertCircleCheckOutline" Command="{Binding NavigateCommand}" CommandParameter="Alerts"/>
+                        <uc:MenuButton Icon="CogOutline" Command="{Binding NavigateCommand}" CommandParameter="Settings"/>
+                        
                     </StackPanel>
-                    <uc:MenuButton Icon="Power" VerticalAlignment="Bottom" Margin="0 0 0 15"/>
+                    <uc:MenuButton Icon="Power" Command="{Binding LogoutCommand}" VerticalAlignment="Bottom" Margin="0 0 0 15"/>
                 </Grid>
             </Border>
             

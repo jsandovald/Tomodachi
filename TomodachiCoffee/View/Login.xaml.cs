@@ -39,7 +39,9 @@ namespace TomodachiCoffee.View
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            var dashboard = new Dashboard();
+            dashboard.Show();
+            this.Close();
         }
     }
 }
