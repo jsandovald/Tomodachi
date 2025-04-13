@@ -47,6 +47,9 @@ namespace TomodachiCoffee.Models
                     // Agrega más vistas según las tengas
                     // CurrentView = new FinanceView();
                     break;
+                case "Upload":
+                    CurrentView = new UploadView();
+                    break;
                 default:
                     break;
             }

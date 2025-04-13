@@ -19,12 +19,12 @@ namespace TomodachiCoffee.UserControls
     /// <summary>
     /// Lógica de interacción para HomeView.xaml
     /// </summary>
-    public partial class HomeView : UserControl
+    public partial class UploadView : UserControl
     {
-        public HomeView()
+        public UploadView()
         {
             InitializeComponent();
-            this.DataContext = new HomeViewModel(); // Aquí enlazas la vista al ViewModel
+            this.DataContext = new UploadViewModel(); // Aquí enlazas la vista al ViewModel
         }
     }
 }

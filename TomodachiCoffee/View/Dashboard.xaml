@@ -42,7 +42,7 @@
                         <uc:MenuButton Icon="CommentMultipleOutline" Command="{Binding NavigateCommand}" CommandParameter="Messages"/>
                         <uc:MenuButton Icon="AccountSearchOutline" Command="{Binding NavigateCommand}" CommandParameter="Search"/>
                         <uc:MenuButton Icon="BookSyncOutline" Command="{Binding NavigateCommand}" CommandParameter="Library"/>
-                        <uc:MenuButton Icon="AlertCircleCheckOutline" Command="{Binding NavigateCommand}" CommandParameter="Alerts"/>
+                        <uc:MenuButton Icon="Upload" Command="{Binding NavigateCommand}" CommandParameter="Upload"/>
                         <uc:MenuButton Icon="CogOutline" Command="{Binding NavigateCommand}" CommandParameter="Settings"/>
                         
                     </StackPanel>
