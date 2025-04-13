@@ -39,7 +39,7 @@
                 <Border Grid.Column="2" Style="{StaticResource mainBorder}" Margin="10 0 10 21.5">
                     <Grid>
                         <!--Title-->
-                        <TextBlock Text="Recruitment Costs YTD" Style="{StaticResource titleText}" />
+                        <TextBlock Text="Ventas por Mes" Style="{StaticResource titleText}" />
 
                         <!--Filter Button-->
                         <Button Style="{StaticResource titleButton}" Margin="0 -3 0 0">
@@ -49,20 +49,18 @@
                         <!--Legends-->
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 45 0 0">
                             <Border Width="12" Height="12" Background="#7166f9" CornerRadius="3"/>
-                            <TextBlock Text="Marketing" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
+                            <TextBlock Text="Ventas" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
 
-                            <Border Width="12" Height="12" Background="#101a28" CornerRadius="3"/>
-                            <TextBlock Text="Case Sales" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
                         </StackPanel>
 
                         <!--Cost Chart-->
-                        <lvc:CartesianChart LegendLocation="None" Margin="0 40 0 0">
+                        <lvc:CartesianChart Series="{Binding MesSeries}" LegendLocation="None" Margin="0 40 0 0">
                             <lvc:CartesianChart.DataTooltip>
                                 <lvc:DefaultTooltip Background="#24336a" Foreground="#d5e2ff" />
                             </lvc:CartesianChart.DataTooltip>
 
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug">
+                                <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="{Binding MesLabels}">
                                     <lvc:Axis.Separator>
                                         <lvc:Separator StrokeThickness="0" Step="1" />
                                     </lvc:Axis.Separator>
@@ -70,17 +68,13 @@
                             </lvc:CartesianChart.AxisX>
 
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="30">
+                                <lvc:Axis Foreground="#bcc0c6" ShowLabels="True" MinValue="0" MaxValue="35000000">
                                     <lvc:Axis.Separator>
                                         <lvc:Separator StrokeThickness="0" />
                                     </lvc:Axis.Separator>
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
 
-                            <lvc:CartesianChart.Series>
-                                <lvc:StackedColumnSeries Fill="#7166f9" MaxColumnWidth="15" Values="11,13,17,20,17,15,16,13" />
-                                <lvc:StackedColumnSeries Fill="#101a28" MaxColumnWidth="15" Values="6,5,6,4,6,6,7,6" />
-                            </lvc:CartesianChart.Series>
                         </lvc:CartesianChart>
 
                     </Grid>
