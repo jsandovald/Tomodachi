@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="TomodachiCoffee.UserControls.ProveedorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:uc="clr-namespace:TomodachiCoffee.UserControls"
+             xmlns:vm="clr-namespace:TomodachiCoffee.Models"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
+    <DockPanel Margin="10">
+        <!-- ComboBox arriba -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBlock Text="Tabla:" VerticalAlignment="Center" Margin="0 0 10 0"/>
+            <ComboBox x:Name="cmbTabla" Width="200" SelectionChanged="cmbTabla_SelectionChanged">
+                <ComboBoxItem Content="ProveedorProducto" />
+                <ComboBoxItem Content="Producto" />
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Botones abajo -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0 10 0 0">
+            <Button Content="Agregar" Click="BtnAgregar_Click" Margin="0 0 10 0"/>
+            <Button Content="Eliminar" Click="BtnEliminar_Click" />
+        </StackPanel>
+
+        <!-- DataGrid en el centro -->
+        <DataGrid x:Name="dgDatos"
+                  AutoGenerateColumns="True"
+                  CanUserAddRows="False"
+                  IsReadOnly="False"
+                  Margin="0,10,0,0"
+                  SelectionMode="Single"/>
+    </DockPanel>
+</UserControl>

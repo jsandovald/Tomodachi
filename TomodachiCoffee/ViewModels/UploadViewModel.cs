@@ -5,7 +5,6 @@ using System.Windows;
 using TomodachiCoffee.Models;
 using System.IO;
 using System.Data;
-using TomodachiCoffee.Models;
 using ExcelDataReader;
 
 namespace TomodachiCoffee.ViewModels
@@ -66,9 +65,9 @@ namespace TomodachiCoffee.ViewModels
                 var reporte = LeerHojaExcel(RutaArchivo, 3, "Ventas");
                 var detalleReporte = LeerHojaExcel(RutaArchivo, 0, "Adiciones");
 
-                //Database.InsertDataTable(reporte, "reporte");
+                Database.InsertDataTable(reporte, "reporte");
                 Database.InsertDataTable(detalleReporte, "detallereporte");
-                
+
 
                 MessageBox.Show($"Archivo cargado correctamente:\n{RutaArchivo}");
             }
@@ -137,13 +136,13 @@ namespace TomodachiCoffee.ViewModels
         private void CargarReporte()
         {
             ReporteItems.Clear();
-            DataTable dt = Database.ExecuteQuery("SELECT * FROM bd_cafeteria.reporte ORDER BY Fecha DESC LIMIT 10");
+            DataTable dt = Database.ExecuteQuery("select v.* from (SELECT * FROM bd_cafeteria.ventas order by Fecha desc) v limit 10");
 
             foreach (DataRow row in dt.Rows)
             {
                 ReporteItems.Add(new ReporteItem
                 {
-                    Id = row["IdReporte"]?.ToString(),
+                    Id = row["IdVenta"]?.ToString(),
                     Fecha = row["Fecha"]?.ToString(),
                     Total = row["Total"]?.ToString(),
                     MedioPago = row["MedioPago"]?.ToString()

@@ -1,5 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace TomodachiCoffee.Models
 {
@@ -30,7 +33,6 @@ namespace TomodachiCoffee.Models
 
             int columnCount = data.Columns.Count;
 
-            // Crear placeholders de parámetros: @param0, @param1, ..., @paramN
             var paramNames = Enumerable.Range(0, columnCount)
                                        .Select(i => $"@param{i}")
                                        .ToList();
@@ -43,13 +45,34 @@ namespace TomodachiCoffee.Models
 
                 for (int i = 0; i < columnCount; i++)
                 {
-                    parameters.Add(new MySqlParameter(paramNames[i], row[i] ?? DBNull.Value));
+                    object value = row[i] ?? DBNull.Value;
+
+                    if (value is string strValue)
+                    {
+                        value = CleanString(strValue);
+                    }
+
+                    parameters.Add(new MySqlParameter(paramNames[i], value));
                 }
 
                 using var cmd = new MySqlCommand(sql, connection);
                 cmd.Parameters.AddRange(parameters.ToArray());
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        private static string CleanString(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return string.Empty;
+
+            // 2. Eliminar emojis (fuera del rango básico de caracteres Unicode)
+            string cleaned = Regex.Replace(input, @"[\p{Cs}\p{So}\p{Co}]", "emojis");
+
+            // 3. Eliminar caracteres especiales (excepto letras, números, espacios, comas y puntos)
+            cleaned = Regex.Replace(cleaned, @"[^a-zA-Z0-9\u00C0-\u00FF\s\.,:\-_/]", "");
+
+            return cleaned;
         }
     }
 }
